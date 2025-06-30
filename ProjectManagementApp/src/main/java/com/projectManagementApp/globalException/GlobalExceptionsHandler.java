@@ -88,6 +88,19 @@ public class GlobalExceptionsHandler {
 	    
 	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 	}
+
+	@ExceptionHandler(UnSupportedOAuthProviderException.class)
+	public ResponseEntity<ErrorResponse> handleUnSupportedOAuthProviderException(
+			HttpServletRequest request,
+			UnSupportedOAuthProviderException ex){
+		ErrorResponse err = new  ErrorResponse(
+				LocalDateTime.now(),
+				HttpStatus.BAD_REQUEST.value(),
+				"Invalid Auth Provider",
+				ex.getMessage(), request.getRequestURI());
+		return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
+	
 	
 
 }
