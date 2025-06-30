@@ -24,7 +24,7 @@ import com.projectManagementApp.services.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000","https://spontaneous-chaja-2084a3.netlify.app/"}, allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:5173", "https://splendorous-zuccutto-0b577e.netlify.app/","https://spontaneous-chaja-2084a3.netlify.app/"}, allowCredentials = "true")
 public class UserController {
 	
 	@Autowired
