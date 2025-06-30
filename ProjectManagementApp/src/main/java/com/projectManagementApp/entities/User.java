@@ -46,6 +46,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<PasswordResetToken> passwordResetTokens;
 	
+	private String signUpMethod;
 	
 	
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -108,8 +109,10 @@ public class User {
 	public void setPasswordResetTokens(List<PasswordResetToken> passwordResetTokens) {
 		this.passwordResetTokens = passwordResetTokens;
 	}
-	
-	
-	
-
+	public String getSignupMethod() {
+		return signUpMethod;
+	}
+	public void setSignupMethod(String signUpMethod) {
+		this.signUpMethod = signUpMethod;
+	}
 }
