@@ -32,13 +32,19 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
     
+    @Autowired
+    private OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
+    
+    @Autowired
+    private SecurityExceptionHandler securityExceptionHandler;
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Add this
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/oauth2/**", "/auth/login", "/auth/signup", 
+                .requestMatchers("/oauth2/**", "/auth/login", "/auth/signup", "/oauth2/**",
                                "/api/v1/user/login", "/api/users/forgot-password", 
                                "/api/users/reset-password", "/image/**").permitAll()
                 .requestMatchers("/v3/api-docs/**", "/v3/api-docs", "/swagger-ui/**", 
@@ -49,10 +55,16 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Add this for preflight
                 .anyRequest().authenticated()
             )
+            .oauth2Login(oauth2 -> oauth2
+                    .successHandler(oAuth2AuthenticationSuccessHandler)
+                )
             .authenticationProvider(authenticationProvider())
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // ENABLE THIS
             )
+            .exceptionHandling(ex -> ex
+                 .authenticationEntryPoint(securityExceptionHandler)
+             )
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
