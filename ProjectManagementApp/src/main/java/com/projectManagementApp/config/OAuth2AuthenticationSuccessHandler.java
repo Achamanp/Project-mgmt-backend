@@ -187,7 +187,6 @@ public class OAuth2AuthenticationSuccessHandler extends SavedRequestAwareAuthent
        
         try {
             String targetUrl = UriComponentsBuilder.fromUriString(frontendUrl + "/")
-                    .queryParam("token", jwtToken)
                     .build().toUriString();
             
             
