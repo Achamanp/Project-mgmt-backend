@@ -1,6 +1,7 @@
 package com.projectManagementApp.services.impl;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
@@ -181,6 +182,16 @@ public class UserServiceImpl implements UserService{
 	        throw new RuntimeException("Failed to update password: " + e.getMessage(), e);
 	    }
 	}
+
+	  public Optional<User> findByEmail(String email) {
+	        Optional<User> byEmail = userRepository.findByEmail(email);
+	        return byEmail;
+	    }
+	  
+	  
+	  public void registerUser(User newUser) {
+	        userRepository.save(newUser);
+	    }
 
 
 }
