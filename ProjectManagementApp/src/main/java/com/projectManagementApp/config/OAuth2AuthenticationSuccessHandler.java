@@ -191,7 +191,6 @@ public class OAuth2AuthenticationSuccessHandler extends SavedRequestAwareAuthent
             
             
             this.setAlwaysUseDefaultTargetUrl(true);
-            this.setDefaultTargetUrl(targetUrl);
             
             // Option 2: Return token in a cookie (can be read by JavaScript)
           
