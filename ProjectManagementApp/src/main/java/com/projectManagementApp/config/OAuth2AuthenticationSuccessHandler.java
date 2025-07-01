@@ -186,7 +186,7 @@ public class OAuth2AuthenticationSuccessHandler extends SavedRequestAwareAuthent
         logger.info("Generated JWT token for user: {}", email);
        
         try {
-            String targetUrl = UriComponentsBuilder.fromUriString(frontendUrl + "/")
+            String targetUrl = UriComponentsBuilder.fromUriString(frontendUrl + "/home")
                     .build().toUriString();
             
             
