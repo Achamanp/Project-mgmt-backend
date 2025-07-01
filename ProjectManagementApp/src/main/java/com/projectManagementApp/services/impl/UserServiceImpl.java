@@ -194,8 +194,8 @@ public class UserServiceImpl implements UserService{
 	    }
 	  
 	  
-	  public void registerUser(User newUser) {
-	        userRepository.save(newUser);
+	  public User registerUser(User newUser) {
+	      return userRepository.save(newUser);
 	    }
 
 
