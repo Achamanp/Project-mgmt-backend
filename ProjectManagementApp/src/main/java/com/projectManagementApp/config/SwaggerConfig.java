@@ -34,14 +34,14 @@ public class SwaggerConfig {
                         .description("REST API for Project Management System with JWT Authentication")
                         .version("1.0.0")
                         .contact(new Contact()
-                                .name("Your Name")
-                                .email("your.email@company.com")
+                                .name("Achaman Pathak")
+                                .email("achamanpathak6@gmail.com")
                                 .url("https://your-company.com"))
                         .license(new License()
                                 .name("MIT License")
                                 .url("https://opensource.org/licenses/MIT")))
                 .servers(List.of(
-                        new Server().url("http://localhost:" + serverPort + contextPath)
+                        new Server().url("https://project-mgmt-backend-production.up.railway.app" + contextPath)
                                 .description("Development Server"),
                         new Server().url("https://your-api-domain.com" + contextPath)
                                 .description("Production Server")))
