@@ -12,6 +12,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.projectManagementApp.entities.Invitation;
 import com.projectManagementApp.entities.Project;
@@ -46,6 +48,9 @@ public class InvitationServiceImpl implements InvitationService{
 	@Autowired
 	private JavaMailSender javaMailSender;
 
+	@Value("${frontend.url}")
+        private String frontendUrl;
+
 	@Override
 	public void sendInvitation(String email, Long projectId) {
 		
@@ -79,7 +84,7 @@ public class InvitationServiceImpl implements InvitationService{
 		this.invitationRepository.save(invitation);
 		
 		
-		String invitationLink = "http://localhost:5173/accept_invitation?token="+token;
+		String invitationLink = frontendUrl+"/accept_invitation?token="+token;
 		emailService.sendEmailWithTokken(email, invitationLink);
 		
 	}
