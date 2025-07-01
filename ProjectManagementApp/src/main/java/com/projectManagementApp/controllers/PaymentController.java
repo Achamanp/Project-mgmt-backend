@@ -32,7 +32,7 @@ public class PaymentController {
     private UserService userService;
     
     @PostMapping("/{planType}")
-    @CrossOrigin(origins = {"https://spontaneous-chaja-2084a3.netlify.app/", "https://splendorous-zuccutto-0b577e.netlify.app/"})
+    @CrossOrigin(origins = {"https://spontaneous-chaja-2084a3.netlify.app/", "https://projectmanagentapp-6.onrender.com/"})
     public ResponseEntity<PaymentLinkResponse> createPaymentLink(
             @PathVariable PlanType planType,
             @RequestHeader("Authorization") String jwt) {
