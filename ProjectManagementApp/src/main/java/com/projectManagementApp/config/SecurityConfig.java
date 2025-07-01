@@ -75,7 +75,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowCredentials(true);
-        configuration.addAllowedOrigin("https://splendorous-zuccutto-0b577e.netlify.app");
+        configuration.addAllowedOrigin("https://projectmanagentapp-6.onrender.com");
         configuration.addAllowedOrigin("https://spontaneous-chaja-2084a3.netlify.app");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
