@@ -77,6 +77,7 @@ public class SecurityConfig {
         configuration.setAllowCredentials(true);
         configuration.addAllowedOrigin("https://projectmanagentapp-6.onrender.com");
         configuration.addAllowedOrigin("https://spontaneous-chaja-2084a3.netlify.app");
+        configuration.addAllowedOrigin("http://localhost:5173");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setMaxAge(3600L);
