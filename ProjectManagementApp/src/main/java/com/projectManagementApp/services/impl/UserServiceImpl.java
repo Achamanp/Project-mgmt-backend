@@ -24,6 +24,7 @@ import com.projectManagementApp.globalException.ResourceNotFoundException;
 import com.projectManagementApp.repositories.PasswordResetTokenRepository;
 import com.projectManagementApp.repositories.UserRepository;
 import com.projectManagementApp.services.UserService;
+import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
@@ -33,6 +34,10 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private JwtHelper jwtHelper;
+
+
+	@Value("${frontend.url}")
+        private String frontendUrl;
 	
 	
 	@Autowired
@@ -117,7 +122,7 @@ public class UserServiceImpl implements UserService{
 	    }
 	}
 	private String createPasswordResetHtmlContent(String username, int otp, String token) {
-	    String resetUrl = "http://localhost:5173/reset-password?token=" + token;
+	    String resetUrl = frontendUrl+"/reset-password?token=" + token;
 	    
 	    return "<html>" +
 	           "<head>" +
