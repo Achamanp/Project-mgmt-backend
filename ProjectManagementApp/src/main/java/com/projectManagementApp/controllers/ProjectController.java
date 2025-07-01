@@ -66,10 +66,10 @@ public class ProjectController {
             return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PostMapping
+   @PostMapping
     public ResponseEntity<ApiResponse<Project>> createProject(
             @RequestBody Project projectRequest) {
-        try {
+       // try {
             User user = this.userService.findUserProfileByJwt();
             Project createdProject = projectService.createProject(projectRequest, user);
 
@@ -79,15 +79,16 @@ public class ProjectController {
                     createdProject
             );
             return new ResponseEntity<>(response, HttpStatus.CREATED);
-        } catch (Exception e) {
-            ApiResponse<Project> errorResponse = new ApiResponse<>(
-                    false,
-                    "Failed to create project: " + e.getMessage(),
-                    null
-            );
-            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+//        } catch (Exception e) {
+//            ApiResponse<Project> errorResponse = new ApiResponse<>(
+//                    false,
+//                    "Failed to create project: " + e.getMessage(),
+//                    null
+//            );
+//            return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+ //       }
     }
+    
     
     @PutMapping("/{projectId}")
     public ResponseEntity<ApiResponse<Project>> updateProject(
